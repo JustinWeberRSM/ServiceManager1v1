@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly 1-on-1 Meeting Form</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .form-section {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        input[type="text"],
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem; /* rounded-md */
+            font-size: 0.9rem;
+            line-height: 1.25rem;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus {
+            border-color: #6366f1; /* indigo-500 */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2); /* indigo-200 with opacity */
+        }
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .table-input {
+            padding: 0.4rem 0.6rem;
+        }
+        .submit-button {
+            background-color: #4f46e5; /* indigo-600 */
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            font-weight: 600; /* font-semibold */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .submit-button:hover {
+            background-color: #4338ca; /* indigo-700 */
+        }
+    </style>
+</head>
+<body class="p-6 md:p-10 lg:p-12">
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Weekly 1-on-1 Meeting Form</h1>
+
+        <!-- Formspree integration: Replace YOUR_FORMSPREE_ENDPOINT with your actual endpoint -->
+        <!-- You'll need to go to https://formspree.io/, create a new form, and use the endpoint provided there. -->
+        <!-- The email jweber@mobileair.com will be the recipient you set up in Formspree. -->
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label for="branchName" class="block text-sm font-medium text-gray-700 mb-1">Branch:</label>
+                    <input type="text" id="branchName" name="Branch" class="mt-1 block w-full rounded-md" placeholder="Branch Name" required>
+                </div>
+                <div>
+                    <label for="serviceManagerName" class="block text-sm font-medium text-gray-700 mb-1">Service Manager:</label>
+                    <input type="text" id="serviceManagerName" name="Service Manager" class="mt-1 block w-full rounded-md" placeholder="Service Manager's Name" required>
+                </div>
+                <div>
+                    <label for="meetingDate" class="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                    <input type="date" id="meetingDate" name="Date" class="mt-1 block w-full rounded-md" required>
+                </div>
+                <!-- Meeting # box removed as requested -->
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">I. Inventory Review</h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Current Status:</h3>
+                    <textarea id="inventoryCurrentStatus" name="Inventory - Current Status" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any critical inventory shortages or excesses? Upcoming large project needs? On track with counts/audits?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Action Items from Last Week:</h3>
+                    <textarea id="inventoryLastWeekActions" name="Inventory - Last Week Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="Review previous inventory-related action items and their status"></textarea>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">New Action Items:</h3>
+                    <textarea id="inventoryNewActions" name="Inventory - New Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="List any new inventory-related tasks or follow-ups"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">II. People & Team Development</h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Team Morale/Well-being:</h3>
+                    <textarea id="teamMorale" name="People - Team Morale/Well-being" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any concerns regarding team morale, workload, individual well-being? Conflicts?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Training & Development:</h3>
+                    <textarea id="trainingDevelopment" name="People - Training & Development" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any training needs or opportunities? New hire integration?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Performance & Recognition:</h3>
+                    <textarea id="performanceRecognition" name="People - Performance & Recognition" rows="3" class="mt-1 block w-full rounded-md" placeholder="Outstanding performance to highlight? Performance concerns?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Action Items from Last Week:</h3>
+                    <textarea id="peopleLastWeekActions" name="People - Last Week Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="Review previous people-related action items and their status"></textarea>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">New Action Items:</h3>
+                    <textarea id="peopleNewActions" name="People - New Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="List any new people-related tasks or follow-ups"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">III. Projects & Operations</h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Key Projects Status:</h3>
+                    <textarea id="projectsStatus" name="Projects - Key Projects Status" rows="5" class="mt-1 block w-full rounded-md" placeholder="Project A: Status, roadblocks, next steps; Project B: Status, roadblocks, next steps..."></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Operational Efficiency:</h3>
+                    <textarea id="operationalEfficiency" name="Projects - Operational Efficiency" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any bottlenecks or inefficiencies? Ideas for improvement?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Safety & Compliance:</h3>
+                    <textarea id="safetyCompliance" name="Projects - Safety & Compliance" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any recent safety incidents or near misses? Are all safety protocols being followed? Any concerns?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Action Items from Last Week:</h3>
+                    <textarea id="projectsLastWeekActions" name="Projects - Last Week Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="Review previous project/operations-related action items and their status"></textarea>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">New Action Items:</h3>
+                    <textarea id="projectsNewActions" name="Projects - New Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="List any new project/operations-related tasks or follow-ups"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">IV. Deadlines & Priorities</h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Upcoming Critical Deadlines:</h3>
+                    <textarea id="criticalDeadlines" name="Deadlines - Critical Deadlines" rows="3" class="mt-1 block w-full rounded-md" placeholder="What are the top 3-5 most critical deadlines for the coming week/two weeks? Are we on track to meet them? Any risks?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Prioritization Check:</h3>
+                    <textarea id="prioritizationCheck" name="Deadlines - Prioritization Check" rows="3" class="mt-1 block w-full rounded-md" placeholder="Are current priorities clear and aligned with overall goals? Any conflicting priorities that need to be resolved?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Support Needed:</h3>
+                    <textarea id="supportNeeded" name="Deadlines - Support Needed" rows="3" class="mt-1 block w-full rounded-md" placeholder="What support do you need from me to meet these deadlines or address priorities?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Action Items from Last Week:</h3>
+                    <textarea id="deadlinesLastWeekActions" name="Deadlines - Last Week Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="Review previous deadline/priority-related action items and their status"></textarea>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">New Action Items:</h3>
+                    <textarea id="deadlinesNewActions" name="Deadlines - New Actions" rows="3" class="mt-1 block w-full rounded-md" placeholder="List any new deadline/priority-related tasks or follow-ups"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">V. Open Discussion & Feedback</h2>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Service Manager's Topics:</h3>
+                    <textarea id="smTopics" name="Open Discussion - Service Manager's Topics" rows="3" class="mt-1 block w-full rounded-md" placeholder="What's on your mind? Any other topics you'd like to discuss?"></textarea>
+                </div>
+                <div class="mb-4">
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Manager's Feedback:</h3>
+                    <textarea id="managerFeedback" name="Open Discussion - Manager's Feedback" rows="3" class="mt-1 block w-full rounded-md" placeholder="Your general feedback/observations for the Service Manager"></textarea>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Any other business?</h3>
+                    <textarea id="otherBusiness" name="Open Discussion - Any Other Business" rows="3" class="mt-1 block w-full rounded-md" placeholder="Any other items to discuss?"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">VI. Summary of New Action Items (Consolidated)</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-4 text-left border-b border-gray-200">Item #</th>
+                                <th class="py-3 px-4 text-left border-b border-gray-200">Description</th>
+                                <th class="py-3 px-4 text-left border-b border-gray-200">Owner</th>
+                                <th class="py-3 px-4 text-left border-b border-gray-200">Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="actionItemsTableBody" class="text-gray-700 text-sm">
+                            <!-- Rows will be added dynamically or manually -->
+                            <tr>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-12" value="1." name="Action Item 1 - Number"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-full" placeholder="Description" name="Action Item 1 - Description"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-24" placeholder="Owner" name="Action Item 1 - Owner"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="date" class="table-input w-32" name="Action Item 1 - Due Date"></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-12" value="2." name="Action Item 2 - Number"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-full" placeholder="Description" name="Action Item 2 - Description"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-24" placeholder="Owner" name="Action Item 2 - Owner"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="date" class="table-input w-32" name="Action Item 2 - Due Date"></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-12" value="3." name="Action Item 3 - Number"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-full" placeholder="Description" name="Action Item 3 - Description"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-24" placeholder="Owner" name="Action Item 3 - Owner"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="date" class="table-input w-32" name="Action Item 3 - Due Date"></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-12" value="4." name="Action Item 4 - Number"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-full" placeholder="Description" name="Action Item 4 - Description"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-24" placeholder="Owner" name="Action Item 4 - Owner"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="date" class="table-input w-32" name="Action Item 4 - Due Date"></td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-12" value="5." name="Action Item 5 - Number"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-full" placeholder="Description" name="Action Item 5 - Description"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="text" class="table-input w-24" placeholder="Owner" name="Action Item 5 - Owner"></td>
+                                <td class="py-3 px-4 border-b border-gray-200"><input type="date" class="table-input w-32" name="Action Item 5 - Due Date"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-6">
+                <label for="nextMeetingDate" class="block text-sm font-medium text-gray-700 mb-1">Next Meeting Date:</label>
+                <input type="date" id="nextMeetingDate" name="Next Meeting Date" class="mt-1 block w-full rounded-md">
+            </div>
+
+            <button type="submit" class="submit-button">Submit Form</button>
+        </form>
+    </div>
+</body>
+</html>
